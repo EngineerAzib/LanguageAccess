@@ -1,37 +1,58 @@
 import React from 'react';
-import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, FlatList } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
-const PromotionalCard = ({ title, imagePath, discount, onPress }) => {
+const PromotionalCard = ({ items, onPress }) => {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.container}>
-      <ImageBackground source={imagePath} style={styles.image} imageStyle={styles.imageBorder}>
-        <View style={styles.overlay}>
-          <View style={styles.textContainer}>
-            <Text style={styles.title}>{title}</Text>
-            <Text style={styles.discount}>{discount}</Text>
-          </View>
-          <TouchableOpacity style={styles.arrowButton}>
-            <Feather name="arrow-right" size={24} color="white" />
-          </TouchableOpacity>
-        </View>
-      </ImageBackground>
-    </TouchableOpacity>
+    <FlatList
+      data={items}
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      keyExtractor={(item, index) => index.toString()}
+      contentContainerStyle={styles.flatListContainer}
+      renderItem={({ item }) => (
+        <TouchableOpacity onPress={onPress} style={styles.container}>
+          <ImageBackground
+            source={item.imagePath}
+            style={styles.image}
+            imageStyle={styles.imageBorder}
+          >
+            <View style={styles.contentContainer}>
+              {/* Text Section */}
+              <View style={styles.textContainer}>
+                <Text style={styles.title}>{item.title}</Text>
+                <Text style={styles.discount}>{item.discount}</Text>
+              </View>
+
+              {/* Arrow Section */}
+              <View style={styles.arrowContainer}>
+                <Feather name="arrow-right" size={20} color="#FFFFFF" />
+              </View>
+            </View>
+          </ImageBackground>
+        </TouchableOpacity>
+      )}
+    />
   );
 };
 
 const styles = StyleSheet.create({
+  flatListContainer: {
+    paddingVertical: 10,
+  },
   container: {
     width: 320,
     height: 200,
-    borderRadius: 20,
+    borderRadius: 35,
+    borderBottomLeftRadius:0,
     overflow: 'hidden',
-    marginHorizontal: 8,
-    elevation: 4, // Adds shadow for Android
+    // marginHorizontal: 8,
+marginRight:15,
+    elevation: 4,
     shadowColor: '#000',
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.2,
     shadowRadius: 6,
-    shadowOffset: { width: 0, height: 4 }, // iOS shadow
+    shadowOffset: { width: 0, height: 4 },
   },
   image: {
     flex: 1,
@@ -39,37 +60,37 @@ const styles = StyleSheet.create({
   imageBorder: {
     borderRadius: 20,
   },
-  overlay: {
+  contentContainer: {
     flex: 1,
-    flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-end',
-    padding: 16,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
-    borderBottomLeftRadius: 20,
+    padding: 20,
+    backgroundColor: 'rgba(0, 0, 0, 0.3)', // Optional dark overlay for contrast
   },
   textContainer: {
-    flex: 1,
     justifyContent: 'center',
   },
   title: {
-    color: 'white',
-    fontSize: 22,
+    color: '#FFFFFF',
+    fontSize: 28,
     fontWeight: '700',
-    marginBottom: 4,
+    marginBottom: 5,
   },
   discount: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: '500',
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: '400',
   },
-  arrowButton: {
+  arrowContainer: {
+    top:20,
+    right:20,
+    width: 100,
+    height: 70,
     backgroundColor: '#003D5B',
-    borderRadius: 20,
-    width: 40,
-    height: 40,
+   
+    borderTopRightRadius:20,
     justifyContent: 'center',
     alignItems: 'center',
+    alignSelf: 'flex-start', // Align left
   },
 });
 

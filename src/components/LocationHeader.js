@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const LocationHeader = () => {
+const LocationHeader = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.locationTag}>
@@ -13,9 +13,15 @@ const LocationHeader = () => {
           <Icon name="notifications-none" size={25} color="#000" style={styles.notificationIcon} />
           <View style={styles.notificationDot} />
         </View>
+        <TouchableOpacity
+        
+         
+          onPress={() => navigation.navigate('ProfileScreen')}
+        >
         <View style={styles.profileImageContainer}>
           <Image source={require('../assets/images/profile.jpeg')} style={styles.profileImage} />
         </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -26,7 +32,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 16,
+    paddingHorizontal: 16,
   },
   locationTag: {
     backgroundColor: '#fff',
@@ -43,7 +49,7 @@ const styles = StyleSheet.create({
     
   },
   notificationIconContainer: {
-    borderColor:'green',
+    borderColor:'#1560bd',
     borderWidth:1.5,
     borderRadius: 25,
     alignItems: 'center',

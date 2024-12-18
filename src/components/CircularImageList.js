@@ -1,49 +1,41 @@
-// CircularImageList.js
-
 import React from 'react';
-import { View, Text, Image, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 
-const CircularImageList = ({ items }) => {
+const CircularImageList = ({ items, navigation }) => {
   return (
-    <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.scrollContainer}>
-      <View style={styles.row}>
-        {items.map((item, index) => (
-          <View key={index} style={styles.itemContainer}>
+    <FlatList
+      data={items}
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      keyExtractor={(item, index) => index.toString()}
+      contentContainerStyle={styles.flatListContainer}
+      renderItem={({ item }) => (
+        <View style={styles.itemContainer}>
+          <TouchableOpacity onPress={() => navigation.navigate('InterpreterProfileScreen')}>
             <View style={styles.profileImageContainer}>
-            <Image source={item.imageUri} style={styles.avatar} />
+              <Image source={item.imageUri} style={styles.avatar} />
             </View>
-            <Text style={styles.itemText}>{item.label}</Text>
-          </View>
-        ))}
-      </View>
-    </ScrollView>
+          </TouchableOpacity>
+          <Text style={styles.itemText}>{item.label}</Text>
+        </View>
+      )}
+    />
   );
 };
 
 const styles = StyleSheet.create({
-  scrollContainer: {
-    paddingVertical: 10,
-  },
-  row: {
-    flexDirection: 'row',
+  flatListContainer: { paddingVertical: 10 },
+  itemContainer: { alignItems: 'center', marginHorizontal: 8 },
+  profileImageContainer: {
+    backgroundColor: '#f0f0f0',
+    borderRadius: 30,
     alignItems: 'center',
-  },
-  itemContainer: {
-    alignItems: 'center',
-    marginHorizontal: 8,
+    padding: 3,
   },
   avatar: {
     width: 60,
     height: 60,
     borderRadius: 30,
-    padding:10,
-  },
-  profileImageContainer: {
-    backgroundColor: '#f0f0f0',
-    borderRadius: 30,
-    alignItems: 'center',
-    padding:3,
-
   },
   itemText: {
     marginTop: 4,

@@ -15,11 +15,11 @@ const UserTypeToggle = ({ userType, onUserTypeChanged }) => {
           styles.optionContainer,
           {
             backgroundColor: isSelected ? '#FFFFFF' : '#F3F4F8',
-            borderColor: isSelected ? '#28A745' : 'transparent',
+            borderColor: isSelected ? '#1560bd' : 'transparent',
           },
         ]}
       >
-        <Text style={[styles.optionText, { color: isSelected ? '#28A745' : '#707070' }]}>
+        <Text style={[styles.optionText, { color: isSelected ? '#1560bd' : '#707070' }]}>
           {type}
         </Text>
       </TouchableOpacity>

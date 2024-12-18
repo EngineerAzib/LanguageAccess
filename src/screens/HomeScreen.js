@@ -1,8 +1,8 @@
-import React from 'react';
-import { View, Text, ScrollView, StyleSheet, Dimensions } from 'react-native';
+import React, {useState} from 'react';
+import { View, Text, ScrollView, StyleSheet, Dimensions, FlatList,TouchableOpacity } from 'react-native';
 import LocationHeader from '../components/LocationHeader';
 import SearchBar from '../components/SearchBar';
-import FilterChips from '../components/FilterChips';
+import LanguageTabs from '../components/LanguageTabs';
 import PromotionalCard from '../components/PromotionalCard';
 import TopSearchLanguages from '../components/TopSearchLanguages';
 import CircularImageList from '../components/CircularImageList';
@@ -12,47 +12,65 @@ import Svg, { Path, Circle } from 'react-native-svg';
 import { MaterialIcons, FontAwesome, Ionicons } from 'react-native-vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import BottomTabNavigator from '../navigation/BottomTabNavigator';
-
+import Search from '../components/Search';
+import SafeAreaComponent from '../components/SafeAreaComponent';
 const { width } = Dimensions.get('window'); // Get screen width for scaling
 const scale = (size) => (width / 375) * size; // Scaling utility for responsive design
 
+const languages = [
+  { id: '1', name: 'Arabic', code: 'SA' },
+  { id: '2', name: 'Indonesian', code: 'ID' },
+  { id: '3', name: 'Malaysian', code: 'MY' },
+  { id: '4', name: 'English', code: 'GB' },
+  { id: '5', name: 'German', code: 'DE' },
+  { id: '6', name: 'Hindi', code: 'IN' },
+  { id: '7', name: 'Italian', code: 'IT' },
+  { id: '8', name: 'Japanese', code: 'JP' },
+  { id: '9', name: 'French', code: 'FR' },
+];
+
 const HomeScreen = ({route}) => {
+  const [searchText, setSearchText] = useState('');
+  const [filterTab, setFilterTab] = useState('All');
   const navigation = useNavigation();
+
+   // Filter languages based on search input and active tab
+const filteredLanguages = languages.filter(
+  (language) =>
+    language.name.toLowerCase().includes(searchText.toLowerCase()) &&
+    (filterTab === 'All' || language.name === filterTab)
+);
 
   const handleScreenChange = (screenName) => {
     navigation.navigate(screenName);
   };
   return (
+    <SafeAreaComponent backgroundColor="#1560bd">
     <View style={styles.container}>
       {/* Background circle with heart/language symbol */}
      
 <BackgroundCircle/>
-      <LocationHeader />
+      <LocationHeader  navigation={navigation} />
       <ScrollView contentContainerStyle={styles.content}>
         <Text style={styles.welcomeText}>Welcome!</Text>
         <Text style={styles.subTitle}>Let's start exploring</Text>
 
         {/* Search Bar */}
-        <SearchBar />
+        <Search searchText={searchText} onChangeText={setSearchText} />
 
         {/* Filter Chips */}
-        <FilterChips filters={["All", "English", "Chinese", "Urdu"]} />
+        <LanguageTabs filterTab={filterTab} setFilterTab={setFilterTab}  navigation={navigation}/>
 
         {/* Promotional Cards */}
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.promotionalCardsContainer}
-        >
-          <PromotionalCard
-            title="Halloween Sale!"
-            imagePath={require('../assets/countries/usa.jpeg')}
-          />
-          <PromotionalCard
-            title="Summer Vacation"
-            imagePath={require('../assets/countries/turkey.jpeg')}
-          />
-        </ScrollView>
+       
+  
+  <PromotionalCard  items={[
+    { title: 'Halloween Sale!', discount: 'Up to 60% Discount',  imagePath: require('../assets/countries/usa.jpeg') },
+    { title: 'Summer Vacation', discount: 'Up to 60% Discount', imagePath: require('../assets/countries/turkey.jpeg') },
+  ]}/>
+ 
+  {/* contentContainerStyle={styles.promotionalCardsContainer} */}
+
         {/* Top Search Languages */}
         <TopSearchLanguages items={[
           { title: "Chinese", imageName: require('../assets/countries/china.jpeg') },
@@ -74,13 +92,18 @@ const HomeScreen = ({route}) => {
           { imageUri: require('../assets/images/p2.jpeg'), label: "Agent 1" },
           { imageUri: require('../assets/images/p3.jpeg'), label: "Agent 2" },
           { imageUri: require('../assets/images/profile.jpeg'), label: "Agent 3" },
-        ]} />
+        ]} 
+        navigation={navigation}
+        />
 
         {/* Explore Language List */}
-        <LanguageList items={[
-          { title: "China", imageName: require('../assets/countries/china.jpeg') },
-          { title: "USA", imageName: require('../assets/countries/usa.jpeg') },
-        ]}/>
+        <View style={styles.header}>
+        <Text style={styles.title}>Top Languages</Text>
+        <TouchableOpacity
+         onPress={() => navigation.navigate('LanguageScreen')}
+        ><Text style={styles.explore}>Explore</Text></TouchableOpacity>
+      </View>
+        <LanguageList languages={filteredLanguages}  navigation={navigation} />
       </ScrollView>
       <View style={styles.navContainer}>
         <BottomTabNavigator
@@ -89,6 +112,7 @@ const HomeScreen = ({route}) => {
         />
       </View>
     </View>
+    </SafeAreaComponent>
   );
 };
 
@@ -101,11 +125,13 @@ const styles = StyleSheet.create({
   },
   content: {
     paddingHorizontal: 20,
+    paddingBottom: '25%',
   },
   welcomeText: {
     fontSize: 35,
     fontWeight: '450',
     lineHeight: 40,
+    
     color: '#003D5B',
     marginTop: 20,
     fontFamily: 'Lato',
@@ -115,7 +141,8 @@ const styles = StyleSheet.create({
     fontWeight: '450',
     fontFamily: 'Lato',
     color: '#003D5B',
-    marginBottom: 35,
+    
+    marginBottom: 20,
   },
   sectionTitle: {
     fontSize: 20,
@@ -145,6 +172,9 @@ const styles = StyleSheet.create({
     right: 0,
     height: scale(65),
   },
+  header: { flexDirection: 'row', justifyContent: 'space-between', marginVertical: 15 },
+  title: { fontSize: 20, fontWeight: '600', color: '#003D5B' },
+  explore: { color: '#1560bd' },
 });
 
 export default HomeScreen;

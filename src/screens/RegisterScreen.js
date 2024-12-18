@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   registerButton: {
-    backgroundColor: '#28A745',
+    backgroundColor: '#1560bd',
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     color: '#666',
   },
   registerLink: {
-    color: '#007AFF',
+    color: '#1560bd',
     fontWeight: 'bold',
   },
 });

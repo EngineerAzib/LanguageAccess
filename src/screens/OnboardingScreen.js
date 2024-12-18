@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     lineHeight: 40,
   },
   highlight: {
-    color: '#007AFF',
+    color: '#1560bd',
     fontWeight: 'bold',
   },
   subtitle: {
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   nextButton: {
-    backgroundColor: '#28A745',
+    backgroundColor: '#1560bd',
     borderRadius: 30,
     alignSelf: 'center',
     paddingVertical: 14,
