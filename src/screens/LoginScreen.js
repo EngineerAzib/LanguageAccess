@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
 import CustomTextField from '../components/CustomTextField';
+import SafeAreaComponent from '../components/SafeAreaComponent';
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   return (
+    <SafeAreaComponent backgroundColor="#1560bd">
     <ScrollView contentContainerStyle={styles.container}>
       <Image source={require('../assets/images/illustration.jpg')} style={styles.illustration} />
       <Text style={styles.title}>Let's Sign In</Text>
@@ -56,6 +58,7 @@ const LoginScreen = ({ navigation }) => {
         </Text>
       </TouchableOpacity>
     </ScrollView>
+    </SafeAreaComponent>
   );
 };
 
@@ -64,7 +67,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     backgroundColor: '#fff',
     padding: 24,
-    paddingTop:'20%',
+    paddingTop:'10%',
   },
   illustration: {
     width: 150,

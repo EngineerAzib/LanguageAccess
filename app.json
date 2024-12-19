@@ -1,7 +1,23 @@
 {
   "expo": {
-    "name": "LanguageAccessSolutionCustomer",
-    "slug": "LanguageAccessSolutionCustomer",
-    "version": "1.0.0"
+    "name": "LanguageAccessSolutions",
+    "slug": "Language-Access-Solutions",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./src/assets/images/logo.png",
+    "android": {
+      "package": "com.LanguageAccessSolutions",
+      "versionCode": 1,
+      "permissions": []
+    },
+    "ios": {
+      "bundleIdentifier": "com.LanguageAccessSolutions",
+      "buildNumber": "1.0.0"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "a24e1c8c-c64c-4c87-822f-8a6955b5cac7"
+      }
+    }
   }
 }

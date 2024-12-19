@@ -1,4 +1,4 @@
-package com.languageaccesssolutioncustomer
+package com.LanguageAccessSolutions
 
 import android.os.Build
 import android.os.Bundle

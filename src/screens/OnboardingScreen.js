@@ -1,8 +1,11 @@
 import React from 'react';
 import { View, Text, ImageBackground, StyleSheet, TouchableOpacity } from 'react-native';
+import SafeAreaComponent from '../components/SafeAreaComponent';
 
 const OnboardingScreen = ({ navigation }) => {
   return (
+    
+    <SafeAreaComponent backgroundColor="#1560bd">
     <View style={styles.container}>
       {/* Skip Button */}
       <TouchableOpacity
@@ -36,6 +39,7 @@ const OnboardingScreen = ({ navigation }) => {
         </TouchableOpacity>
       </ImageBackground>
     </View>
+    </SafeAreaComponent>
   );
 };
 
@@ -46,7 +50,7 @@ const styles = StyleSheet.create({
   },
   skipContainer: {
     position: 'absolute',
-    top: 50,
+    top: '3%',
     right: 16,
     backgroundColor: '#EDEDED',
     borderRadius: 20,
@@ -61,7 +65,7 @@ const styles = StyleSheet.create({
   },
   content: {
     paddingHorizontal: 24,
-    paddingTop: 90,
+    paddingTop: '15%',
     paddingBottom: 24,
     marginTop:24,
     

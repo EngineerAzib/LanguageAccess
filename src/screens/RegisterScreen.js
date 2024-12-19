@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView,Image } from 'react-native';
 import CustomTextField from '../components/CustomTextField';
 import UserTypeToggle from '../components/UserTypeToggle'; 
+import SafeAreaComponent from '../components/SafeAreaComponent';
+
 
 const Registration = ({navigation}) => {
   const [userType, setUserType] = useState('Customer');
@@ -25,6 +27,8 @@ const Registration = ({navigation}) => {
   };
 
   return (
+    
+    <SafeAreaComponent backgroundColor="#1560bd">
     <ScrollView contentContainerStyle={styles.container}>
        <Image source={require('../assets/images/illustration.jpg')} style={styles.illustration} />
      
@@ -74,6 +78,7 @@ const Registration = ({navigation}) => {
         </Text>
       </TouchableOpacity>
     </ScrollView>
+    </SafeAreaComponent>
   );
 };
 
@@ -82,7 +87,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     backgroundColor: '#fff',
     padding: 24,
-    paddingTop:'20%',
+    paddingTop:'10%',
   },
   illustration: {
     width: 150,

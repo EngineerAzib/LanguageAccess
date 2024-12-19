@@ -33,14 +33,16 @@ const ProfileScreen = ({route}) => {
 
   return (
     <View style={styles.container}>
+      
       {/* Profile Header */}
       <ProfileHeader user={userData} navigation={navigation} />
-
       {/* Settings Heading */}
+      
+      <ScrollView contentContainerStyle={styles.settingsContainer}>
       <Text style={styles.settingsHeading}>Settings</Text>
 
       {/* Settings Section */}
-      <ScrollView contentContainerStyle={styles.settingsContainer}>
+      
         <SettingList onItemPress={handleItemPress} />
       </ScrollView>
 
@@ -60,16 +62,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5F5F5',
   },
   settingsHeading: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#333',
+   fontSize: 20, fontWeight: '600', color: '#003D5B',
     marginTop: 40,
     marginBottom: 10,
-    marginLeft: 20,
+    // marginLeft: 20,
   },
   settingsContainer: {
     paddingHorizontal: 20,
-    paddingBottom: 20,
+    paddingBottom: '25%',
   },
   navContainer: {
     flex: 1,

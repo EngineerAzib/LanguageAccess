@@ -43,7 +43,7 @@ const ProfileHeader = ({ user, onEditPress, navigation }) => {
 const styles = StyleSheet.create({
   header: {
     width: '100%',
-    height: 260,
+    height: '30%',
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
     position: 'relative',
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   },
   editButton: {
     position: 'absolute',
-    top: 60,
+    top: '15%',
     right: 20,
     backgroundColor: 'rgba(0, 0, 0, 0.3)',
     padding: 8,
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   contentContainer: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    marginTop: 115,
+    marginTop: '25%',
     marginLeft: 20,
   },
   profileImage: {

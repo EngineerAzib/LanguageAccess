@@ -1,15 +1,14 @@
 import React, {useState} from 'react';
 import { View, Text, ScrollView, StyleSheet, Dimensions, FlatList,TouchableOpacity } from 'react-native';
 import LocationHeader from '../components/LocationHeader';
-import SearchBar from '../components/SearchBar';
+
 import LanguageTabs from '../components/LanguageTabs';
 import PromotionalCard from '../components/PromotionalCard';
 import TopSearchLanguages from '../components/TopSearchLanguages';
 import CircularImageList from '../components/CircularImageList';
 import LanguageList from '../components/LanguageList';
 import BackgroundCircle from '../components/BackgroundCircle';
-import Svg, { Path, Circle } from 'react-native-svg';
-import { MaterialIcons, FontAwesome, Ionicons } from 'react-native-vector-icons';
+
 import { useNavigation } from '@react-navigation/native';
 import BottomTabNavigator from '../navigation/BottomTabNavigator';
 import Search from '../components/Search';
@@ -45,11 +44,12 @@ const filteredLanguages = languages.filter(
     navigation.navigate(screenName);
   };
   return (
-    <SafeAreaComponent backgroundColor="#1560bd">
+    <SafeAreaComponent backgroundColor="#1560bd"  >
     <View style={styles.container}>
       {/* Background circle with heart/language symbol */}
      
 <BackgroundCircle/>
+
       <LocationHeader  navigation={navigation} />
       <ScrollView contentContainerStyle={styles.content}>
         <Text style={styles.welcomeText}>Welcome!</Text>
@@ -122,6 +122,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingTop: 30,
     position: 'relative', // Added to position the background circle
+    overflow: 'hidden',
   },
   content: {
     paddingHorizontal: 20,

@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 20, // Increased padding
     marginBottom: 20, // Added more spacing
-    elevation: 2,
+    // elevation: 2,
   },
   profileImage: {
     width: 60, // Larger image

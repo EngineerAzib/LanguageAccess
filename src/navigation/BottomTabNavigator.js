@@ -11,7 +11,7 @@ const BottomTabNavigator = ({ activeScreen, onScreenChange }) => {
     { name: 'HomeScreen', displayName: 'Home', icon: 'home' },
     { name: 'ProfileScreen', displayName: 'Profile', icon: 'person' },
     { name: 'LanguageScreen', displayName: 'Languages', icon: 'globe-outline' },
-    { name: 'OnboardingScreen', displayName: 'Logout', icon: 'log-out' },
+    { name: 'LoginScreen', displayName: 'Logout', icon: 'log-out' },
   ];
 
   return (
