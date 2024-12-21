@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "846021480062",
+    "project_id": "language-access-e117e",
+    "storage_bucket": "language-access-e117e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:846021480062:android:15d010c789b41ee57cd22f",
+        "android_client_info": {
+          "package_name": "languageaccesssolution.com"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8pjwcmeB7gTNBzRGs5sfdzA5awpUbLq4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
